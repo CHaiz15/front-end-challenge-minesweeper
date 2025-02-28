@@ -1,5 +1,13 @@
-## Oxen Frontend developer challenge
 
+# This is a fork of the Oxen Frontend developer challenge
+### Proof of functionality 
+<img width="1822" alt="minesweeper-default" src="https://github.com/user-attachments/assets/2b3a965d-022d-46ed-8400-b1f7feefdc79" />
+
+https://github.com/user-attachments/assets/f2c8572f-4a44-4c32-9c12-9b073c1e879c
+
+https://github.com/user-attachments/assets/4b71e5c1-0d1c-4c0b-a20c-2e4cd198e1c2
+
+## Original README
 To test your skills, we'd like you to build a simple minesweeper game.
 
 ## Instructions
