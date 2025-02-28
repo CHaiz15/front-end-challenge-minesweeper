@@ -3,6 +3,8 @@ export interface Cell {
   hasMine: boolean;
   x: number;
   y: number;
+  isRevealed: boolean;
+  adjacentMines: number;
 }
 
 /** Configuration options for generating a minesweeper grid */
@@ -52,3 +54,36 @@ export function generateGrid(columns: number, rows: number, mines: number): bool
 
   return grid;
 }
+
+/**
+ * Counts adjacent mines for a given cell
+ * @param grid Boolean matrix representing mine positions
+ * @param x Number on the x axis of the grid
+ * @param y Number on the y axis of the grid
+ * @returns Number of adjacent mines for a given cell
+ */
+const countAdjacentMines = (grid: boolean[][], x: number, y: number): number => {
+  let count = 0;
+  for (let dx = -1; dx <= 1; dx++) {
+    for (let dy = -1; dy <= 1; dy++) {
+      let nx = x + dx;
+      let ny = y + dy;
+      if (nx >= 0 && nx < grid[0].length && ny >= 0 && ny < grid.length && grid[ny][nx]) {
+        count++;
+      }
+    }
+  }
+  return count;
+};
+
+/** Initializes the grid with Cell objects */
+export function initializeGrid(): Cell[][] {
+  const grid = generateGrid(10, 10, 10)
+  return grid.map((row, y) => row.map((hasMine, x) => ({
+    hasMine,
+    x,
+    y,
+    isRevealed: false,
+    adjacentMines: hasMine ? 0 : countAdjacentMines(grid, x, y)
+  })));
+};
